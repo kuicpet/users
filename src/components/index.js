@@ -1,8 +1,12 @@
 import NotFound from './NotFound'
 import User from './User'
-import Users from './Users'
+
 import Card from './Card'
 import Loader from './Loader'
 import Grid from './Grid'
+import Button from './Button'
+import Users from './Users'
+import Navbar from './Navbar'
+import Footer from './Footer'
 
-export { User, Users, NotFound, Card, Loader, Grid }
+export { Footer, User, NotFound, Card, Loader, Grid, Button, Users, Navbar }
