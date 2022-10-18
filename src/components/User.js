@@ -1,14 +1,14 @@
 import React from 'react'
 import ErrorBoundary from './ErrorBoundary'
 
-const Users = () => {
+const User = () => {
   return (
     <>
       <ErrorBoundary>
-        <div>Users</div>
+        <div>User</div>
       </ErrorBoundary>
     </>
   )
 }
 
-export default Users
+export default User
