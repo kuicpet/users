@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Grid = ({ header, children }) => (
+const Grid = ({ children }) => (
   <Container>
-    <h1>{header}</h1>
     <Content>{children}</Content>
   </Container>
 )
@@ -11,11 +10,8 @@ const Grid = ({ header, children }) => (
 export const Container = styled.div`
   margin: 0 auto;
   padding: 0 20px;
-  min-height: 100vh ;
-  h1 {
-    margin: 1.5rem 0;
-    font-weight: 500;
-  }
+  //min-height: 100vh;
+ 
 `
 export const Content = styled.div`
   display: grid;

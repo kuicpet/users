@@ -14,7 +14,7 @@ export const Container = styled.nav`
   display: flex;
   width: 100%;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1rem;
   border-bottom: 2px solid black;
 `
 export default Navbar

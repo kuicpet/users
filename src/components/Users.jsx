@@ -1,10 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
+import React, { useState, useEffect, useMemo } from 'react'
+import { Outlet } from 'react-router-dom'
 import Card from './Card'
 import Grid from './Grid'
 import Loader from './Loader'
+import Pagination from './Pagination'
+import {
+  FaChevronLeft,
+  FaChevronCircleRight,
+  FaChevronRight,
+} from 'react-icons/fa'
+import styled from 'styled-components'
 
-const Home = () => {
+const PageSize = 10
+
+const Users = () => {
   const [users, setUsers] = useState([])
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
@@ -13,9 +22,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         setLoading(true)
-        await fetch(
-          `https://randomuser.me/api/?page=${page}&results=10&seed=abc`
-        )
+        await fetch(`https://randomuser.me/api/?results=50&seed=abc`)
           .then((res) => res.json())
           .then((data) => {
             // console.log(data)
@@ -29,23 +36,86 @@ const Home = () => {
     fetchData()
   }, [])
 
+  const totalUsers = users?.length
+  const pageCount = 5
+  const steps = page * PageSize - PageSize
+
   return (
     <>
+      {loading && <Loader />}
       <Grid header='All Users'>
         {users.length > 0 &&
-          users.map((user, i) => (
-            <Card
-              key={i}
-              image={user.picture.large}
-              firstName={user.name.first}
-              lastName={user.name.last}
-              email={user.email}
-            />
-          ))}
+          users
+            .slice(steps, steps + PageSize)
+            .map((user, i) => (
+              <Card
+                key={i}
+                image={user.picture.large}
+                firstName={user.name.first}
+                lastName={user.name.last}
+                email={user.email}
+              />
+            ))}
       </Grid>
-      {loading && <Loader />}
+      <Wrapper>
+        <Pagination>
+          <Button
+            disabled={page <= 1}
+            onClick={() => setPage((prev) => prev - 1)}>
+            <FaChevronLeft />
+          </Button>
+          {Array.from({ length: pageCount }, (value, i) => i + 1).map(
+            (item) => (
+              <Button onClick={() => setPage(item)}>{item}</Button>
+            )
+          )}
+          <Button
+            disabled={page >= pageCount}
+            aria-disabled={page >= pageCount}
+            onClick={() => setPage((prev) => prev + 1)}>
+            <FaChevronRight />
+          </Button>
+        </Pagination>
+      </Wrapper>
     </>
   )
 }
 
-export default Home
+export const Wrapper = styled.div`
+  display: flex;
+  //border: 2px solid black;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1rem;
+  margin: 2rem 0;
+`
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  font-size: 1.25rem;
+  font-weight: 200;
+  width: 2rem;
+  height: 2rem;
+  background: white;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  
+  :hover {
+    background-color: green;
+    color: white;
+  }
+  :focus {
+    background-color: green;
+    color: white;
+  }
+  :disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+    color: black
+  }
+`
+export default Users
