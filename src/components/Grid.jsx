@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import Hero from './Hero'
 
-const Grid = ({ children }) => (
+const Grid = ({header, children }) => (
   <Container>
+    <Hero title={header} />
     <Content>{children}</Content>
   </Container>
 )

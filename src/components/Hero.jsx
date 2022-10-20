@@ -14,6 +14,7 @@ export const Container = styled.section`
   width: 100%;
   align-items: center;
   padding: 0 2rem ;
+  text-transform: capitalize ;
   //justify-content: center;
   h1 {
     margin: 1.5rem 0;

@@ -2,9 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Loader = () => (
-  <Spinner />
+  <Container>
+    <Spinner />
+  </Container>
 )
 
+export const Container = styled.div`
+  min-height: 100vh ;
+`
 export const Spinner = styled.div`
   width: 50px;
   height: 50px;

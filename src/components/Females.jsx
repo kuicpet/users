@@ -9,7 +9,7 @@ import styled from 'styled-components'
 
 const PageSize = 10
 
-const Users = () => {
+const Females = () => {
   const [users, setUsers] = useState([])
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
@@ -18,7 +18,7 @@ const Users = () => {
     const fetchData = async () => {
       try {
         setLoading(true)
-        await fetch(`https://randomuser.me/api/?results=50&seed=abc`)
+        await fetch(`https://randomuser.me/api/?gender=female&results=50`)
           .then((res) => res.json())
           .then((data) => {
             // console.log(data)
@@ -39,7 +39,7 @@ const Users = () => {
   return (
     <>
       {loading && <Loader />}
-      <Grid header='All Users'>
+      <Grid header='female Users'>
         {users.length > 0 ? (
           users
             .slice(steps, steps + PageSize)
@@ -56,7 +56,6 @@ const Users = () => {
           <h5>No Users</h5>
         )}
       </Grid>
-     
       {users && users.length > 0 && (
         <Wrapper>
           <Pagination>
@@ -79,7 +78,6 @@ const Users = () => {
           </Pagination>
         </Wrapper>
       )}
-      
     </>
   )
 }
@@ -120,4 +118,4 @@ export const Button = styled.button`
     color: black;
   }
 `
-export default Users
+export default Females

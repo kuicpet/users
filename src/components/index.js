@@ -9,6 +9,8 @@ import Users from './Users'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Pagination from './Pagination'
+import Males from './Males'
+import Females from './Females'
 
 export {
   Footer,
@@ -22,4 +24,6 @@ export {
   Users,
   Navbar,
   Pagination,
+  Females,
+  Males,
 }

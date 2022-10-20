@@ -14,7 +14,7 @@ export const Container = styled.div`
     width: 100%;
   }
   @media screen and (min-width: 800px) {
-    width: 50%;
+    width: 30%;
   }
 `
 export default Pagination
