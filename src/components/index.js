@@ -11,6 +11,7 @@ import Footer from './Footer'
 import Pagination from './Pagination'
 import Males from './Males'
 import Females from './Females'
+import ErrorFallback from './Error'
 
 export {
   Footer,
@@ -26,4 +27,5 @@ export {
   Pagination,
   Females,
   Males,
+  ErrorFallback
 }

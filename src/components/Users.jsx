@@ -53,10 +53,12 @@ const Users = () => {
               />
             ))
         ) : (
-          <h5>No Users</h5>
+          <Container>
+            <h5>No Users Found!</h5>
+          </Container>
         )}
       </Grid>
-     
+
       {users && users.length > 0 && (
         <Wrapper>
           <Pagination>
@@ -79,11 +81,17 @@ const Users = () => {
           </Pagination>
         </Wrapper>
       )}
-      
     </>
   )
 }
 
+export const Container = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 65vh;
+  width: 100%; ;
+`
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;

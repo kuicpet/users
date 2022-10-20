@@ -1,15 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ErrorBoundary, useErrorHandler } from 'react-error-boundary'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { ErrorFallback } from './components'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <ErrorBoundary FallbackComponent={<ErrorFallback />}>
+        <App />
+      </ErrorBoundary>
     </Router>
   </React.StrictMode>
 )
