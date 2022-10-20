@@ -23,7 +23,7 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to={`/users/males`}
+            to={`/males`}
             style={({ isActive }) => ({
               color: isActive ? 'black' : 'lightgray',
             })}>
@@ -32,7 +32,7 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to={`/users/females`}
+            to={`/females`}
             style={({ isActive }) => ({
               color: isActive ? 'black' : 'lightgray',
             })}>
@@ -58,7 +58,7 @@ export const Container = styled.nav`
     font-size: 1.5rem;
     margin: 0 1rem;
     a {
-      color: #9d0a5d ;
+      color: #9d0a5d;
     }
   }
   ul {

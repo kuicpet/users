@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <Container>
       <small>
-        Made with <span className='heart'>❤</span> by <a href='https://github.com/kuicpet' target='_blank'>Kingsley Umujeyan</a> &copy;{' '}
+        Made with <span className='heart'>❤</span> by <a href='https://github.com/kuicpet' target='_blank' >Kingsley Umujeyan</a> &copy;{' '}
         {date}
       </small>
     </Container>
