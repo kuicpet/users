@@ -6,13 +6,17 @@ import Loader from './Loader'
 import Pagination from './Pagination'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
+import Modal from './Modal'
 
 const PageSize = 10
 
 const Users = () => {
+  const [showModal, setShowModal] = useState(false)
   const [users, setUsers] = useState([])
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +25,7 @@ const Users = () => {
         await fetch(`https://randomuser.me/api/?results=50&seed=abc`)
           .then((res) => res.json())
           .then((data) => {
-            // console.log(data)
+            console.log(data)
             setUsers(data?.results)
           })
       } catch (error) {
@@ -32,10 +36,19 @@ const Users = () => {
     fetchData()
   }, [])
 
+  const getUser = (userId) => {
+    const userDetail = users?.find((user) => user.id.name === userId)
+    console.log(user)
+    setUser(userDetail)
+    setShowModal(true)
+    //navigate('/user')
+  }
+
   const totalUsers = users?.length
   const pageCount = 5
   const steps = page * PageSize - PageSize
 
+  const name = user?.name?.first
   return (
     <>
       {loading && <Loader />}
@@ -45,6 +58,7 @@ const Users = () => {
             .slice(steps, steps + PageSize)
             .map((user, i) => (
               <Card
+                getUser={() => getUser(user.id.name)}
                 key={i}
                 image={user.picture.large}
                 firstName={user.name.first}
@@ -58,6 +72,12 @@ const Users = () => {
           </Container>
         )}
       </Grid>
+      {showModal && (
+        <Modal onShow={showModal} onClose={() => setShowModal(false)}>
+          
+          <h1>{name}</h1>
+        </Modal>
+      )}
 
       {users && users.length > 0 && (
         <Wrapper>

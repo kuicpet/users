@@ -3,17 +3,22 @@ import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
-    const navigate = useNavigate()
-    const handleClick = () => {
-        navigate('/users')
-    }
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate('/users')
+  }
   return (
     <Container>
       <Content>
         <h1>Welcome mate!</h1>
-        <h5>We have been expecting you</h5>
+        <h5>Community,Innovation and Learning.</h5>
       </Content>
-      <Button type='button' onClick={() => handleClick()}>View Users</Button>
+      <Wrapper>
+        <Button type='button' onClick={() => handleClick()}>
+          View Users
+        </Button>
+        <Button>Join the Community</Button>
+      </Wrapper>
     </Container>
   )
 }
@@ -32,6 +37,7 @@ export const Content = styled.section`
     font-size: 4.5rem;
     font-weight: 200;
     margin: 0.5rem 0;
+    text-align: center;
     @media screen and (max-width: 400px) {
       font-size: 3rem;
     }
@@ -39,6 +45,19 @@ export const Content = styled.section`
   h5 {
     color: gray;
     text-align: center;
+    font-size: 1.125rem;
+    font-weight: 200;
+  }
+`
+export const Wrapper = styled.div`
+  display: flex;
+  margin: 1rem ;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
   }
 `
 export const Button = styled.button`

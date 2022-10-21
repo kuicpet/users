@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Card = ({ image, firstName, lastName, email }) => {
+const Card = ({ image, firstName, lastName, email, userId, getUser}) => {
   return (
-    <Container>
+    <Container onClick={getUser} >
       <Image src={image} alt='' />
       <Details className='details'>
         <h5>
@@ -48,7 +48,7 @@ export const Details = styled.div`
   transform: scale(0);
   z-index: 100;
   font-size: small;
-  background:linear-gradient(0deg,rgb(9,9,9) 0%, rgb(9,9,9,0) 100%) ;
+  background: linear-gradient(0deg, rgb(9, 9, 9) 0%, rgb(9, 9, 9, 0) 100%);
   h5 {
     font-size: 1.125rem;
     font-weight: 700;
