@@ -16,7 +16,7 @@ const Modal = ({ children, onShow, onClose }) => {
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   display: flex;
@@ -88,6 +88,7 @@ export const Content = styled.div`
     }
   }
   img {
+    object-fit: cover ;
     width: 100%;
     border-radius: 8px;
   }
