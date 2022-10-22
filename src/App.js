@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import { Footer, Users, Navbar, NotFound, Males, Females, User } from './components'
+import { Footer, Users, Navbar, NotFound, Males, Females } from './components'
 import Home from './pages/Home'
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
         <Route exact path='/users' element={<Users />} />
         <Route exact path='/males' element={<Males />} />
         <Route exact path='/females' element={<Females />} />
-        <Route exact path='/user' element={<User />} />
+
         <Route path='/*' element={<NotFound />} />
       </Routes>
       <Footer />

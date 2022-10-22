@@ -79,6 +79,7 @@ export const Button = styled.button`
   &:hover {
     transform: translateY(4px);
     box-shadow: 0 0 0;
+    background-color:rgb(255,171,76) ;
   }
   @media screen and (max-width: 768px) {
     width: 30%;

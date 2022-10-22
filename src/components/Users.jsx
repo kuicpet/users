@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+//import { Outlet } from 'react-router-dom'
 import Card from './Card'
 import Grid from './Grid'
 import Loader from './Loader'
 import Pagination from './Pagination'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { HiLocationMarker, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi'
 import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 import Modal from './Modal'
 
 const PageSize = 10
@@ -44,11 +45,20 @@ const Users = () => {
     //navigate('/user')
   }
 
-  const totalUsers = users?.length
+  //const totalUsers = users?.length
   const pageCount = 5
   const steps = page * PageSize - PageSize
 
-  const name = user?.name?.first
+  const fname = user?.name?.first
+  const lname = user?.name?.last
+  const image = user?.picture?.large
+  const email = user?.email
+  const phone = user?.phone
+  const city = user?.location?.city
+  const state = user?.location?.state
+  const country = user?.location?.country
+  const date = user?.registered?.date
+
   return (
     <>
       {loading && <Loader />}
@@ -74,8 +84,32 @@ const Users = () => {
       </Grid>
       {showModal && (
         <Modal onShow={showModal} onClose={() => setShowModal(false)}>
-          
-          <h1>{name}</h1>
+          <img src={image} alt='' />
+          <div className='details'>
+            <h2 className='name'>
+              Hi,I'm {fname} {lname}
+            </h2>
+            <p>
+              <span>
+                <HiOutlineMail style={{ color: 'red' }} />
+                {email}
+              </span>
+            </p>
+            <h5>
+              <span>
+                <HiOutlinePhone style={{ color: 'green' }} />
+                {phone}
+              </span>
+            </h5>
+            <h5>
+              <span>
+                <HiLocationMarker style={{ color: 'blue' }} />
+                {city},{state}, {country}
+              </span>
+            </h5>
+            <p className='join'>JOINED SINCE: {date.split('', [10])}</p>
+          </div>
+          <button className='connect'>Connect with {fname}</button>
         </Modal>
       )}
 

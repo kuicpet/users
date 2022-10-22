@@ -1,5 +1,4 @@
 import NotFound from './NotFound'
-import User from './User'
 import Hero from './Hero'
 import Card from './Card'
 import Loader from './Loader'
@@ -15,7 +14,6 @@ import Females from './Females'
 export {
   Footer,
   Hero,
-  User,
   NotFound,
   Card,
   Loader,
