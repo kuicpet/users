@@ -81,6 +81,10 @@ export const Content = styled.div`
   h5 {
     margin: 1rem 0;
     font-weight: 100;
+    color: black ;
+    @media screen and (max-width: 400px) {
+      font-weight: 500 ;
+    }
     span {
       display: flex;
       align-items: center;
