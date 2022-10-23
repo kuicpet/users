@@ -7,6 +7,9 @@ const Home = () => {
   const handleClick = () => {
     navigate('/users')
   }
+  const handleSignIn = () => {
+    navigate('/join')
+  }
   return (
     <Container>
       <Content>
@@ -17,7 +20,9 @@ const Home = () => {
         <Button type='button' onClick={() => handleClick()}>
           View Users
         </Button>
-        <Button>Join the Community</Button>
+        <Button type='button' onClick={() => handleSignIn()}>
+          Join the Community
+        </Button>
       </Wrapper>
     </Container>
   )
@@ -51,7 +56,7 @@ export const Content = styled.section`
 `
 export const Wrapper = styled.div`
   display: flex;
-  margin: 1rem ;
+  margin: 1rem;
   align-items: center;
   justify-content: center;
 
@@ -79,7 +84,7 @@ export const Button = styled.button`
   &:hover {
     transform: translateY(4px);
     box-shadow: 0 0 0;
-    background-color:rgb(255,171,76) ;
+    background-color: rgb(255, 171, 76);
   }
   @media screen and (max-width: 768px) {
     width: 30%;
