@@ -4,15 +4,19 @@ import Card from './Card'
 import Grid from './Grid'
 import Loader from './Loader'
 import Pagination from './Pagination'
+import { HiLocationMarker, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import styled from 'styled-components'
+import Modal from './Modal'
 
 const PageSize = 10
 
 const Females = () => {
+  const [showModal, setShowModal] = useState(false)
   const [users, setUsers] = useState([])
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,9 +36,27 @@ const Females = () => {
     fetchData()
   }, [])
 
-  const totalUsers = users?.length
+  const getUser = (userId) => {
+    const userDetail = users?.find((user) => user.email === userId)
+    console.log(user)
+    setUser(userDetail)
+    setShowModal(true)
+    //navigate('/user')
+  }
+
+  //const totalUsers = users?.length
   const pageCount = 5
   const steps = page * PageSize - PageSize
+
+  const fname = user?.name?.first
+  const lname = user?.name?.last
+  const image = user?.picture?.large
+  const email = user?.email
+  const phone = user?.phone
+  const city = user?.location?.city
+  const state = user?.location?.state
+  const country = user?.location?.country
+  const date = user?.registered?.date
 
   return (
     <>
@@ -45,6 +67,7 @@ const Females = () => {
             .slice(steps, steps + PageSize)
             .map((user, i) => (
               <Card
+                getUser={() => getUser(user.email)}
                 key={i}
                 image={user.picture.large}
                 firstName={user.name.first}
@@ -56,6 +79,36 @@ const Females = () => {
           <h5>No Users</h5>
         )}
       </Grid>
+      {showModal && (
+        <Modal onShow={showModal} onClose={() => setShowModal(false)}>
+          <img src={image} alt='' />
+          <div className='details'>
+            <h2 className='name'>
+              Hi,I'm {fname} {lname}
+            </h2>
+            <p>
+              <span>
+                <HiOutlineMail style={{ color: 'red' }} />
+                {email}
+              </span>
+            </p>
+            <h5>
+              <span>
+                <HiOutlinePhone style={{ color: 'green' }} />
+                {phone}
+              </span>
+            </h5>
+            <h5>
+              <span>
+                <HiLocationMarker style={{ color: 'blue' }} />
+                {city},{state}, {country}
+              </span>
+            </h5>
+            <p className='join'>JOINED SINCE: {date.split('', [10])}</p>
+          </div>
+          <button className='connect'>Connect with {fname}</button>
+        </Modal>
+      )}
       {users && users.length > 0 && (
         <Wrapper>
           <Pagination>
