@@ -7,7 +7,6 @@ import Pagination from './Pagination'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { HiLocationMarker, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi'
 import styled from 'styled-components'
-//import { useNavigate } from 'react-router-dom'
 import Modal from './Modal'
 
 const PageSize = 10
@@ -38,7 +37,7 @@ const Users = () => {
   }, [])
 
   const getUser = (userId) => {
-    const userDetail = users?.find((user) => user.id.name === userId)
+    const userDetail = users?.find((user) => user.email === userId)
     console.log(user)
     setUser(userDetail)
     setShowModal(true)
@@ -68,7 +67,7 @@ const Users = () => {
             .slice(steps, steps + PageSize)
             .map((user, i) => (
               <Card
-                getUser={() => getUser(user.id.name)}
+                getUser={() => getUser(user.email)}
                 key={i}
                 image={user.picture.large}
                 firstName={user.name.first}
