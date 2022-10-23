@@ -1,12 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
+import { FaTimes } from 'react-icons/fa'
 
 const Modal = ({ children, onShow, onClose }) => {
   return (
     <Container>
       <Wrapper>
         <Content>
-          <Button onClick={onClose}>&times;</Button>
+          <Button onClick={onClose}>
+            <FaTimes />
+          </Button>
           {children}
         </Content>
       </Wrapper>
@@ -42,7 +45,7 @@ export const Wrapper = styled.div`
     width: 80%;
   }
   @media screen and (max-width: 400px) {
-    height: auto ;
+    height: auto;
   }
 `
 
@@ -54,7 +57,7 @@ export const Content = styled.div`
   height: 100%;
   padding: 3rem 0;
   @media screen and (max-width: 400px) {
-    grid-template-columns: repeat(1,1fr)
+    grid-template-columns: repeat(1, 1fr);
   }
   .connect {
     font-size: 1.125rem;
@@ -81,9 +84,9 @@ export const Content = styled.div`
   h5 {
     margin: 1rem 0;
     font-weight: 100;
-    color: black ;
+    color: black;
     @media screen and (max-width: 400px) {
-      font-weight: 500 ;
+      font-weight: 500;
     }
     span {
       display: flex;
@@ -95,7 +98,7 @@ export const Content = styled.div`
     }
   }
   img {
-    object-fit: cover ;
+    object-fit: cover;
     width: 100%;
     border-radius: 8px;
   }
@@ -137,7 +140,6 @@ export const Button = styled.button`
   border: 2px solid black;
   width: 2.5rem;
   height: 2.5rem;
-  font-size: 2rem;
   border-radius: 8px;
   background-color: white;
   font-weight: 200;
@@ -153,6 +155,9 @@ export const Button = styled.button`
   &:hover {
     transform: translateY(4px);
     box-shadow: 0 0 0;
+  }
+  svg {
+    margin: 0;
   }
 `
 export default Modal
