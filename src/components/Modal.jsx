@@ -16,7 +16,7 @@ const Modal = ({ children, onShow, onClose }) => {
 
 export const Container = styled.div`
   width: 100%;
-  height: auto;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   display: flex;
@@ -40,6 +40,9 @@ export const Wrapper = styled.div`
   padding: 0.75rem;
   @media screen and (max-width: 768px) {
     width: 80%;
+  }
+  @media screen and (max-width: 400px) {
+    height: auto ;
   }
 `
 
