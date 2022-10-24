@@ -122,7 +122,7 @@ const Users = () => {
             </Button>
             {Array.from({ length: pageCount }, (value, i) => i + 1).map(
               (item) => (
-                <Button onClick={() => setPage(item)}>{item}</Button>
+                <Button value={item} onClick={() => setPage(item)}>{item}</Button>
               )
             )}
             <Button
