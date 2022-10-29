@@ -38,7 +38,7 @@ const Users = () => {
 
   const getUser = (userId) => {
     const userDetail = users?.find((user) => user.email === userId)
-    console.log(user)
+    //console.log(user)
     setUser(userDetail)
     setShowModal(true)
     //navigate('/user')
