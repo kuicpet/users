@@ -25,7 +25,7 @@ const Users = () => {
         await fetch(`https://randomuser.me/api/?results=50&seed=abc`)
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
+            //console.log(data)
             setUsers(data?.results)
           })
       } catch (error) {
